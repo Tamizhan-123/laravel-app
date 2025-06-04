@@ -8,7 +8,7 @@ use App\Http\Controllers\OrderController;
 
 // Public welcome page
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
 // Authentication routes
