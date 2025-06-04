@@ -7,6 +7,17 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 
 // Public welcome page
+use Illuminate\Support\Facades\Artisan;
+
+Route::get('/run-schedule', function () {
+    if (request('key') !== env('CRON_KEY')) {
+        abort(403, 'Unauthorized');
+    }
+
+    Artisan::call('schedule:run');
+    return 'Schedule run executed';
+});
+
 Route::get('/', function () {
     return redirect('/login');
 });
