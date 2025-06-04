@@ -28,6 +28,11 @@ RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available
 RUN chown -R www-data:www-data storage bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache
 
+
+    # Make cron script executable
+RUN chmod +x /var/www/html/run-scheduler.sh
+
+
 # Expose port
 EXPOSE 80
 
