@@ -30,3 +30,6 @@ RUN chown -R www-data:www-data storage bootstrap/cache \
 
 # Expose port
 EXPOSE 80
+
+# 🔥 Run migrations on container start and launch Apache
+CMD php artisan migrate --force && apache2-foreground
